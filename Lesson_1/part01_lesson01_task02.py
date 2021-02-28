@@ -9,13 +9,10 @@
 number = None
 
 while number != '0':
-    # Запрос числа у пользователя
     number = str(input('Введите число: '))
 
-    # Разделение числа и суммирвание производных
-    split_number = list(number)
     result = 0
-    for symbol in split_number:
-        result = result + int(symbol)
+    for symbol in number:
+        result += int(symbol)
 
     print(f'Сумма цифр числа {number} равна {result}')

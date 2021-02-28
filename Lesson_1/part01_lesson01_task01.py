@@ -18,6 +18,7 @@ day_sec = 24 * 60 * 60
 hour_sec = 60 * 60
 min_sec = 60
 
+
 user_sec = int(input('Введите размер интервала (в секундах): '))
 
 day = user_sec // day_sec
