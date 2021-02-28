@@ -7,14 +7,13 @@
 создавать новый список?
 """
 
-workers = [
+workers = (
     'инженер-конструктор Игорь',
     'главный бухгалтер МАРИНА',
     'токарь высшего разряда нИКОЛАй',
     'директор аэлита'
-]
+)
 
 for worker in workers:
     worker_name = worker.split()[-1]
     print(f'Привет, {worker_name.capitalize()}!')
-
