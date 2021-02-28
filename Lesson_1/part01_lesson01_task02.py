@@ -9,7 +9,7 @@
 number = None
 
 while number != '0':
-    number = str(input('Введите число: '))
+    number = input('Введите число: ')
 
     result = 0
     for symbol in number:
