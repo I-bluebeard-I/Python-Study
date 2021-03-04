@@ -12,21 +12,26 @@
 в "05" часов "17" минут температура воздуха была "+05" градусов
 """
 
+
 original_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+
 print(id(original_list), '- ID оригинального списка')
 
 for word in range(len(original_list)):
     for symbol in original_list[word]:
 
-        if symbol.isdigit():
+        if original_list[word].isdigit():
             if len(original_list[word]) < 2:
-                original_list[word] = f'"0{symbol}"'
+                original_list[word] = f'"0{original_list[word]}"'
             else:
-                if original_list[word].find('+') != -1:
-                    original_list[word] = original_list[word][:1] + '0' + original_list[word][1:]
                 original_list[word] = f'"{original_list[word]}"'
-                break
 
-print(id(original_list), '- ID обработанного списка')
+        if symbol in '+-':
+            if len(original_list[word]) > 2:
+                original_list[word] = f'"{original_list[word]}"'
+            else:
+                original_list[word] = f'"{original_list[word][:1]}0{original_list[word][1:]}"'
+
 print(' '.join(original_list))
 print(type(' '.join(original_list)))
+print(id(original_list), '- ID обработанного списка')
