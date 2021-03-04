@@ -18,14 +18,14 @@ original_list = ['в', '5', 'часов', '17', 'минут', 'температ�
 print(id(original_list), '- ID оригинального списка')
 
 for word in range(len(original_list)):
+
+    if original_list[word].isdigit():
+        if len(original_list[word]) < 2:
+            original_list[word] = f'"0{original_list[word]}"'
+        else:
+            original_list[word] = f'"{original_list[word]}"'
+
     for symbol in original_list[word]:
-
-        if original_list[word].isdigit():
-            if len(original_list[word]) < 2:
-                original_list[word] = f'"0{original_list[word]}"'
-            else:
-                original_list[word] = f'"{original_list[word]}"'
-
         if symbol in '+-':
             if len(original_list[word]) > 2:
                 original_list[word] = f'"{original_list[word]}"'
