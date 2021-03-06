@@ -19,11 +19,8 @@ def thesaurus(*args):
         key = list_of_args[i][0]
         value = list_of_args[i]
 
-        if key not in dictionary:
-            dictionary[key] = [value]
-        else:
-            dictionary[key].append(value)
-
+        dictionary.setdefault(key, [])
+        dictionary[key].append(value)
     sorted(dictionary.keys())
 
     return dictionary
