@@ -2,7 +2,7 @@
 4. * (вместо задачи 3) Написать функцию thesaurus_adv(), принимающую в качестве аргументов строки в формате
 «Имя Фамилия» и возвращающую словарь, в котором ключи — первые буквы фамилий, а значения — словари, реализованные
 по схеме предыдущего задания и содержащие записи, в которых фамилия начинается с соответствующей буквы. Например:
->>> >>> thesaurus_adv("Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева")
+#>>> thesaurus_adv("Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева")
 {
     "А": {
         "П": ["Петр Алексеев"]
@@ -15,3 +15,28 @@
 Сможете ли вы вернуть отсортированный по ключам словарь?
 """
 
+from pprint import pprint
+
+
+def thesaurus_adv(*args):
+    list_of_args = [*args]
+
+    for i in range(len(list_of_args)):
+        name, surname = list_of_args[i].split()
+        key_surname = surname[0]
+        key_name = name[0]
+
+        if key_surname not in dictionary:
+            dictionary.setdefault(key_surname, [])
+            dictionary[key_surname] = {}
+        dictionary[key_surname].setdefault(key_name, [])
+        dictionary[key_surname][key_name].append(list_of_args[i])
+
+    sorted(dictionary.keys())
+    return dictionary
+
+
+dictionary = {}
+
+thesaurus_adv('Иван Сергеев', 'Инна Серова', 'Петр Алексеев', 'Илья Иванов', 'Анна Савельева')
+pprint(dictionary, width=40)
