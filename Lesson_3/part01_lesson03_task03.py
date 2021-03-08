@@ -13,11 +13,10 @@ from pprint import pprint
 
 
 def thesaurus(*args):
-    list_of_args = [*args]
 
-    for i in range(len(list_of_args)):
-        key = list_of_args[i][0]
-        value = list_of_args[i]
+    for i in range(len(args)):
+        key = args[i][0]
+        value = args[i]
 
         dictionary.setdefault(key, [])
         dictionary[key].append(value)

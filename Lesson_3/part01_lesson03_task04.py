@@ -19,10 +19,9 @@ from pprint import pprint
 
 
 def thesaurus_adv(*args):
-    list_of_args = [*args]
 
-    for i in range(len(list_of_args)):
-        name, surname = list_of_args[i].split()
+    for i in range(len(args)):
+        name, surname = args[i].split()
         key_surname = surname[0]
         key_name = name[0]
 
@@ -30,7 +29,7 @@ def thesaurus_adv(*args):
             dictionary.setdefault(key_surname, [])
             dictionary[key_surname] = {}
         dictionary[key_surname].setdefault(key_name, [])
-        dictionary[key_surname][key_name].append(list_of_args[i])
+        dictionary[key_surname][key_name].append(args[i])
 
     sorted(dictionary.keys())
     return dictionary
