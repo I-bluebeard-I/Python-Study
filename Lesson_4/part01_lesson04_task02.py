@@ -43,6 +43,6 @@ currency_value = None
 
 currency_char_code = input('Введите код валюты (например, USD, EUR, GBP, ...): ')
 try:
-    print(f'{currency_char_code.upper()} {get_currency_rate(currency_char_code):4.2f}', type(currency_value))
+    print(f'{currency_char_code.upper()} {get_currency_rate(currency_char_code):.2f}', type(currency_value))
 except:
     print(get_currency_rate(currency_char_code), type(currency_value))
