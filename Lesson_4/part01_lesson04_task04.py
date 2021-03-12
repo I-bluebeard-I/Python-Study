@@ -12,4 +12,14 @@ USD 75.18, 2020-09-05
 EUR 80.35, 2020-09-05
 """
 
+from utils import get_currency_rate
 
+currency_char_code = 'usd'
+print(f'{currency_char_code.upper()} '
+      f'{get_currency_rate(currency_char_code)[0]}, '
+      f'{get_currency_rate(currency_char_code)[1]}')
+
+currency_char_code = 'eur'
+print(f'{currency_char_code.upper()} '
+      f'{get_currency_rate(currency_char_code)[0]}, '
+      f'{get_currency_rate(currency_char_code)[1]}')
