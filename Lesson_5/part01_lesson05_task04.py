@@ -6,3 +6,7 @@ result = [12, 44, 4, 10, 78, 123]
 """
 
 
+src = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
+
+result = (src[pos] for pos, num in enumerate(src) if pos > 0 and src[pos] > src[pos-1])
+print(list(result))
