@@ -14,3 +14,18 @@
 """
 
 
+def rand_nums(nums):
+    from random import choice
+
+    num = 1
+    while num <= nums:
+        number = choice(range(1, 101))
+        yield number
+        num += 1
+
+
+rand15 = rand_nums(15)
+
+for position, i in enumerate(rand15, start=1):
+    if i % 2 != 0:
+        print(position, i)
