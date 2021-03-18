@@ -15,3 +15,17 @@
 """
 
 
+def rand_nums(nums):
+    from random import choice
+
+    num = 1
+    while num <= nums:
+        number = choice(range(1, 101))
+        yield number
+        num += 1
+
+
+rand15 = rand_nums(15)
+
+for i in rand15:
+    print(i)
