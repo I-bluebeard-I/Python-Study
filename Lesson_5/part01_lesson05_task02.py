@@ -24,8 +24,11 @@ def rand_nums(nums):
         num += 1
 
 
-rand15 = rand_nums(15)
+rand15 = rand_nums(40)
 
 for position, i in enumerate(rand15, start=1):
     if i % 2 != 0:
         print(position, i)
+
+# Чтобы объект-генератор вернул не менее 20 значений, в rand_nums надо передать 20+ чисел,
+# с учетом вероятности 50/50 - около 40 чисел.
