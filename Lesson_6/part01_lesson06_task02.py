@@ -5,20 +5,27 @@
 """
 
 
-import json
+tmp_dict = {}
 
 with open('nginx_logs.txt', 'r') as res_file:
-    while True:
+    for line in res_file:
 
-        with open('nginx_logs_parsed.txt', 'a') as parsed_file:
-            for line in res_file:
+        if not line:
+            break
 
-                if not line:
-                    break
+        remote_addr = line[0:line.find(' ')]
+        request_type = line[line.find('"')+1:line.find(' ', line.index('"'))]
+        requested_resource = line[line.find('/', line.index('"')):line.find('HTTP')-1]
 
-                remote_addr = line[0:line.find(' ')]
-                request_type = line[line.find('"')+1:line.find(' ', line.index('"'))]
-                requested_resource = line[line.find('/', line.index('"')):line.find('HTTP')-1]
+        tmp_dict.setdefault(remote_addr, 0)
+        tmp_dict[remote_addr] += 1
 
-                tmp_tuple = remote_addr, request_type, requested_resource
-                print(json.dumps(tmp_tuple), file=parsed_file)
+spammer = {}
+mes_max = 0
+
+for k, v in tmp_dict.items():
+    if v > mes_max:
+        mes_max = v
+        spammer = [k, v]
+
+print('spammer is ', spammer)
