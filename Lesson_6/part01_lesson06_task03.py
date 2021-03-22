@@ -13,4 +13,30 @@
 горные лыжи
 """
 
+import os
+from pprint import pprint
 
+
+users_data = 'data/users.csv'
+hobbys_data = 'data/hobbys.csv'
+hobby = []
+user_dict = {}
+
+with open(users_data, 'r', encoding='utf-8') as users, \
+     open(hobbys_data, 'r', encoding='utf-8') as hobbys:
+    for hobby_line in hobbys:
+        hobby.append(hobby_line.strip())
+
+    n=0
+    for user_line in users:
+        if not user_line:
+            exit(1)
+
+        if n < len(hobby):
+            user_dict[user_line.strip()] = hobby[n]
+        elif n >= len(hobby):
+            user_dict[user_line.strip()] = 'None'
+        n += 1
+
+pprint(user_dict, width=40)
+print(type(user_dict))
