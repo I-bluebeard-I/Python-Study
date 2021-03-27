@@ -13,30 +13,32 @@
 горные лыжи
 """
 
-import os
+import json
 from pprint import pprint
-
 
 users_data = 'data/users.csv'
 hobbys_data = 'data/hobbys.csv'
-hobby = []
+out_data = 'data/outdata.txt'
 user_dict = {}
 
 with open(users_data, 'r', encoding='utf-8') as users, \
-     open(hobbys_data, 'r', encoding='utf-8') as hobbys:
-    for hobby_line in hobbys:
-        hobby.append(hobby_line.strip())
-
-    n=0
-    for user_line in users:
-        if not user_line:
+     open(hobbys_data, 'r', encoding='utf-8') as hobbys, \
+     open(out_data, 'a', encoding='utf-8') as out_data:
+    while True:
+        user_line = users.readline().strip()
+        if user_line:
+            while True:
+                hobby_line = hobbys.readline().strip()
+                if not hobby_line:
+                    user_dict[user_line.replace(',', ' ')] = 'None'
+                else:
+                    user_dict[user_line.replace(',', ' ')] = hobby_line.replace(',', ', ')
+                break
+        elif hobby_line != '':
             exit(1)
+        else:
+            break
+    print(json.dumps(user_dict), file=out_data)
 
-        if n < len(hobby):
-            user_dict[user_line.strip()] = hobby[n]
-        elif n >= len(hobby):
-            user_dict[user_line.strip()] = 'None'
-        n += 1
-
-pprint(user_dict, width=40)
+pprint(user_dict, width=60)
 print(type(user_dict))

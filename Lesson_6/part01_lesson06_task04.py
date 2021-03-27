@@ -7,3 +7,28 @@
 """
 
 
+users_data = 'data/users.csv'
+hobbys_data = 'data/hobbys.csv'
+out_data = 'data/outdata.csv'
+user_dict = {}
+
+with open(users_data, 'r', encoding='utf-8') as users, \
+     open(hobbys_data, 'r', encoding='utf-8') as hobbys, \
+     open(out_data, 'a', encoding='utf-8') as out_data:
+    while True:
+        user_tmp = users.readline().strip()
+        user_line = user_tmp.split(',')
+        if user_tmp:
+            while True:
+                hobby_tmp = hobbys.readline().strip()
+                hobby_line = hobby_tmp.split(',')
+                if not hobby_tmp:
+                    user_dict[tuple(user_line)] = None
+                else:
+                    user_dict[tuple(user_line)] = tuple(hobby_line)
+                print(user_dict.popitem(), file=out_data)
+                break
+        elif hobby_tmp != '':
+            exit(1)
+        else:
+            break
