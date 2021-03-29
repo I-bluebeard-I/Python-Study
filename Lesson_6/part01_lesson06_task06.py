@@ -27,7 +27,7 @@ python show_sales.py 1 3
 7879,1
 """
 
-
+# реализовал в одном скрипте, выбор дейсвтия определяется параметром ADD_SALE | SHOW_SALES
 # python part01_lesson06_task06.py SHOW_SALES 1 3 5
 
 
