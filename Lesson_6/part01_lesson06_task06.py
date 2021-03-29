@@ -28,12 +28,13 @@ python show_sales.py 1 3
 """
 
 
-# python part01_lesson06_task06.py show_sales 1573,7
+# python part01_lesson06_task06.py SHOW_SALES 1 3 5
 
 
 import sys
 
-if sys.argv[1].lower() == 'add_sale' and len(sys.argv) > 2 or\
+if sys.argv[1].lower() != 'add_sale' and sys.argv[1].lower() != 'show_sales' or\
+   sys.argv[1].lower() == 'add_sale' and len(sys.argv) != 3 or\
    sys.argv[1].lower() == 'show_sales' and len(sys.argv) > 4:
     print('\nДля работы программы наберите:\n'
           'PYTHON <имя скрипта.PY> ADD_SALE | SHOW_SALES [параметр_1] [параметр_2]\n\n'
@@ -42,6 +43,7 @@ if sys.argv[1].lower() == 'add_sale' and len(sys.argv) > 2 or\
           'SHOW_SALES [параметр_1]                    выводит данные о продажах начиная с указанной позиции\n'
           'SHOW_SALES [параметр_1] [параметр_2]       выводит данные о продажах в заданнром диапазоне')
     exit(0)
+
 
 source_file = "data/bakery.csv"
 
