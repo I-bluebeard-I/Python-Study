@@ -13,4 +13,29 @@
 """
 
 
+import os
+from pprint import pprint
 
+research_dir = './'
+statistics = {
+      100: 0,
+      1000: 0,
+      10000: 0,
+      100000: 0,
+      1000000: 0,
+      10000000: 0
+    }
+key_list = []
+
+
+for key in statistics.keys():
+    key_list.append(key)
+
+for file in os.listdir(research_dir):
+    for val in range(len(key_list)):
+        path = os.path.join(research_dir, file)
+        if os.stat(path).st_size <= key_list[val]:
+            statistics[key_list[val]] += 1
+            break
+
+pprint(statistics, width=20)
