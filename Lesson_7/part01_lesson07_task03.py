@@ -16,4 +16,23 @@
 """
 
 
+from part01_lesson07_task02 import create_structure
+import os
+import shutil
 
+in_data_dir = 'data/2'
+out_data_dir = 'data/3/templates'
+
+
+create_structure()
+dir_list = os.walk(in_data_dir)
+
+for line in dir_list:
+    if str(line[2]).find('.html') != -1:
+        copy_dir = str(line[0]).replace('\\', '/')
+        out_data_app = copy_dir[copy_dir.rfind('/') + 1:]
+
+        try:
+            shutil.copytree(copy_dir, os.path.join(out_data_dir, out_data_app).replace('\\', '/'))
+        except FileExistsError:
+            pass
