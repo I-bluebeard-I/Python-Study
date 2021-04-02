@@ -32,10 +32,11 @@ for key in statistics.keys():
     key_list.append(key)
 
 for file in os.listdir(research_dir):
-    for val in range(len(key_list)):
-        path = os.path.join(research_dir, file)
-        if os.stat(path).st_size <= key_list[val]:
-            statistics[key_list[val]] += 1
-            break
+    path = os.path.join(research_dir, file)
+    if os.path.isfile(path):
+        for val in range(len(key_list)):
+            if os.stat(path).st_size <= key_list[val]:
+                statistics[key_list[val]] += 1
+                break
 
 pprint(statistics, width=20)
