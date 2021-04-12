@@ -19,4 +19,22 @@ ValueError: wrong val -5
 """
 
 
+def val_checker(val_func):
 
+    def decor(func):
+        def checker(*args, **kwargs):
+            if val_func(*args, **kwargs):
+                return func(*args, **kwargs)
+            else:
+                raise ValueError(f'wrong val {args, kwargs}')
+        return checker
+    return decor
+
+
+@val_checker(lambda x: x > 0)
+def calc_cube(x):
+    return x ** 3
+
+
+print(calc_cube(5))
+print(calc_cube(-5))
